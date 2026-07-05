@@ -1,0 +1,79 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { career, education, skills } from "@/data/profile";
+---
+
+<BaseLayout
+  title="CV"
+  description="Web CV for Jeongseok Lee, robotics software engineer in physics simulation, robotics, digital humans, and humanoid robots."
+>
+  <section class="page-hero section-shell cv-hero">
+    <div>
+      <p class="eyebrow">CV</p>
+      <h1>Jeongseok Lee</h1>
+      <p class="lead">
+        Robotics software engineer focused on physics simulation for robotics,
+        humanoid robots, digital humans, and AR/VR systems.
+      </p>
+    </div>
+    <a class="button primary" href="/cv/jeongseok-lee-cv.pdf">Download PDF CV</a>
+  </section>
+
+  <section class="section-shell timeline-section">
+    <div class="section-heading">
+      <p class="eyebrow">Technical experience</p>
+      <h2>Career</h2>
+    </div>
+    <div class="timeline">
+      {
+        career.map((item) => (
+          <article class="timeline-item">
+            <div class="timeline-date">{item.period}</div>
+            <div>
+              <h3>{item.role}</h3>
+              <p class="meta-line">
+                {item.organization} · {item.location}
+              </p>
+              <ul class="compact-list">
+                {item.highlights.map((highlight) => <li>{highlight}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-shell two-column-lists">
+    <div>
+      <p class="eyebrow">Education</p>
+      <div class="stack-list">
+        {
+          education.map((item) => (
+            <article class="plain-card">
+              <h3>{item.degree}</h3>
+              <p>{item.institution}</p>
+              <p class="meta-line">{item.period}</p>
+              <p>{item.note}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Skills</p>
+      <div class="stack-list">
+        {
+          skills.map((group) => (
+            <article class="plain-card">
+              <h3>{group.group}</h3>
+              <div class="tag-list">
+                {group.items.map((item) => <span>{item}</span>)}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

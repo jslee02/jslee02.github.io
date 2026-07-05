@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { profile } from "@/data/profile";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact links for Jeongseok Lee."
+>
+  <section class="page-hero section-shell contact-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>Reach out about robotics, simulation, digital humans, or open-source software.</h1>
+    <p class="lead">
+      The fastest public links are GitHub, LinkedIn, Google Scholar, and email.
+    </p>
+  </section>
+
+  <section class="section-shell">
+    <div class="contact-grid">
+      {
+        profile.links.map((link) => (
+          <a class="contact-link" href={link.href}>
+            <span>{link.label}</span>
+            <strong>{link.href.replace("mailto:", "")}</strong>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { featuredProjects } from "@/data/projects";
+import { profile } from "@/data/profile";
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jeongseok Lee",
+  alternateName: "JS Lee",
+  jobTitle: profile.role,
+  worksFor: {
+    "@type": "Organization",
+    name: "Meta Platforms",
+  },
+  url: "https://jeongseok.dev",
+  image: "https://jeongseok.dev/assets/jeongseok-lee.jpg",
+  email: `mailto:${profile.email}`,
+  sameAs: profile.links
+    .filter((link) => !link.href.startsWith("mailto:"))
+    .map((link) => link.href),
+  knowsAbout: profile.tags,
+};
+---
+
+<BaseLayout jsonLd={personLd}>
+  <section class="hero section-shell">
+    <div class="hero-copy">
+      <p class="eyebrow">Physics simulation / robotics / digital humans</p>
+      <h1>{profile.name}</h1>
+      <p class="lead">{profile.focus}</p>
+      <div class="hero-actions">
+        <a class="button primary" href="/work/">Selected work</a>
+        <a class="button secondary" href="/cv/">CV</a>
+      </div>
+    </div>
+    <figure class="portrait-panel">
+      <img src="/assets/jeongseok-lee.jpg" alt="Portrait of Jeongseok Lee" />
+      <figcaption>
+        <strong>{profile.role}</strong>
+        <span>{profile.organization}</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="proof-band">
+    <div class="proof-grid">
+      {
+        profile.proofPoints.map((item) => (
+          <div>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-shell split-section">
+    <div>
+      <p class="eyebrow">Current direction</p>
+      <h2>Simulation systems that bridge research and real-time platforms.</h2>
+    </div>
+    <div class="prose">
+      <p>{profile.summary}</p>
+      <p>
+        The throughline is practical physics software: robust enough for research,
+        maintainable enough for production teams, and clear enough to serve open
+        communities.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-heading">
+      <p class="eyebrow">Featured work</p>
+      <h2>Selected public projects</h2>
+      <a href="/work/">View all work</a>
+    </div>
+    <div class="project-grid featured">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="section-shell focus-section">
+    <div>
+      <p class="eyebrow">Focus areas</p>
+      <h2>Robotics software with a simulation-first center of gravity.</h2>
+    </div>
+    <div class="focus-grid">
+      {
+        profile.tags.map((tag) => (
+          <div class="focus-item">
+            <span>{tag}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

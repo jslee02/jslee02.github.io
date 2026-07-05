@@ -1,0 +1,82 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { awards, patents, publications, service, talks } from "@/data/research";
+---
+
+<BaseLayout
+  title="Research"
+  description="Publications, patents, awards, invited talks, and research service by Jeongseok Lee."
+>
+  <section class="page-hero section-shell">
+    <p class="eyebrow">Research</p>
+    <h1>Physics simulation, motion planning, and robotics systems.</h1>
+    <p class="lead">
+      Publications and research outputs spanning multibody dynamics, contact,
+      differentiable physics, robotic manipulation, and digital humans.
+    </p>
+  </section>
+
+  <section class="section-shell research-list">
+    <div class="section-heading">
+      <p class="eyebrow">Publications</p>
+      <h2>Selected papers</h2>
+    </div>
+    <div class="stack-list">
+      {
+        publications.map((paper) => (
+          <article class="paper-item">
+            <div>
+              <h3>{paper.title}</h3>
+              <p>{paper.authors}</p>
+              <p class="meta-line">{paper.venue}</p>
+              <div class="tag-list">
+                {paper.tags.map((tag) => <span>{tag}</span>)}
+              </div>
+            </div>
+            <div class="inline-links">
+              {paper.links.map((link) => <a href={link.href}>{link.label}</a>)}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-shell two-column-lists">
+    <div>
+      <p class="eyebrow">Patents</p>
+      <div class="stack-list">
+        {
+          patents.map((patent) => (
+            <article class="plain-card">
+              <h3>{patent.title}</h3>
+              <p>{patent.authors}</p>
+              <p class="meta-line">{patent.number}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Awards and service</p>
+      <div class="plain-card">
+        <h3>Awards</h3>
+        <ul class="compact-list">
+          {awards.map((award) => <li>{award}</li>)}
+        </ul>
+      </div>
+      <div class="plain-card">
+        <h3>Talks</h3>
+        <ul class="compact-list">
+          {talks.map((talk) => <li>{talk}</li>)}
+        </ul>
+      </div>
+      <div class="plain-card">
+        <h3>Peer review</h3>
+        <ul class="compact-list">
+          {service.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
