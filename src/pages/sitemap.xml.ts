@@ -1,4 +1,4 @@
-const pages = ["/", "/work/", "/research/", "/cv/", "/contact/"];
+const pages = ["/", "/software/", "/research/", "/cv/", "/contact/"];
 
 export function GET() {
   const urls = pages

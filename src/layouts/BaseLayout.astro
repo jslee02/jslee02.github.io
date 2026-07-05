@@ -6,17 +6,19 @@ import "@/styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  canonicalPath?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = "Jeongseok Lee",
   description = "Jeongseok Lee is a robotics software engineer building physics simulation systems for robotics, digital humans, and AR/VR.",
+  canonicalPath = Astro.url.pathname,
   jsonLd,
 } = Astro.props;
 
 const siteTitle = title === "Jeongseok Lee" ? title : `${title} | Jeongseok Lee`;
-const canonical = new URL(Astro.url.pathname, "https://jeongseok.dev").toString();
+const canonical = new URL(canonicalPath, "https://jeongseok.dev").toString();
 const image = "https://jeongseok.dev/assets/jeongseok-lee.jpg";
 ---
 

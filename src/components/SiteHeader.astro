@@ -1,7 +1,7 @@
 ---
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/work/", label: "Work" },
+  { href: "/software/", label: "Software", aliases: ["/work/"] },
   { href: "/research/", label: "Research" },
   { href: "/cv/", label: "CV" },
   { href: "/contact/", label: "Contact" },
@@ -19,7 +19,10 @@ const pathname = Astro.url.pathname;
     {
       navItems.map((item) => {
         const isActive =
-          item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+          item.href === "/"
+            ? pathname === "/"
+            : pathname.startsWith(item.href) ||
+              item.aliases?.some((alias) => pathname.startsWith(alias));
         return (
           <a href={item.href} aria-current={isActive ? "page" : undefined}>
             {item.label}

@@ -1,0 +1,20 @@
+---
+import ProjectCard from "@/components/ProjectCard.astro";
+import { projects } from "@/data/projects";
+---
+
+<section class="page-hero section-shell">
+  <p class="eyebrow">Software</p>
+  <h1>Robotics software, simulation infrastructure, and digital-human systems.</h1>
+  <p class="lead">
+    Public engineering work organized around durable robotics libraries,
+    research-facing simulation systems, and tools that make implementation
+    judgment visible.
+  </p>
+</section>
+
+<section class="section-shell">
+  <div class="project-grid">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>
