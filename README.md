@@ -18,6 +18,14 @@ npm run build
 npm run preview
 ```
 
+## Deployment Verification
+
+```bash
+npm run verify:deployment
+```
+
+This checks the GitHub Pages fallback URL, the custom domain DNS records, the main public routes, the PDF CV, and GitHub Pages health.
+
 ## Content Updates
 
 - Profile, links, skills, career, and education: `src/data/profile.ts`
@@ -51,3 +59,17 @@ jeongseok.dev.      AAAA  2606:50c0:8003::153
 ```
 
 After DNS propagates, enable GitHub Pages with GitHub Actions as the source and enforce HTTPS.
+
+The current production path is:
+
+- `https://jslee02.github.io/` serves the built site from GitHub Pages.
+- `jeongseok.dev` should be configured as the GitHub Pages custom domain.
+- DNS must point the apex domain to GitHub Pages A records and `www` to `jslee02.github.io`.
+- After GitHub Pages health reports the domain as valid and HTTPS eligible, enforce HTTPS in GitHub Pages settings or with:
+
+```bash
+gh api --method PUT repos/jslee02/jslee02.github.io/pages \
+  -f cname=jeongseok.dev \
+  -f build_type=workflow \
+  -F https_enforced=true
+```
