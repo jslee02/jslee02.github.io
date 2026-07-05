@@ -4,6 +4,7 @@ set -euo pipefail
 domain="${1:-jeongseok.dev}"
 github_pages_host="${2:-jslee02.github.io}"
 repo="${3:-jslee02/jslee02.github.io}"
+dns_resolver="${DNS_RESOLVER:-}"
 
 github_pages_ips=(
   "185.199.108.153"
@@ -30,13 +31,46 @@ section() {
 
 check_route() {
   local url="$1"
-  local code
-  code="$(curl -sS -o /dev/null -w '%{http_code}' "$url" || true)"
+  local result code final_url headers server
+  headers="$(mktemp)"
+  result="$(curl -sS -L -D "$headers" -o /dev/null -w '%{http_code} %{url_effective}' "$url" || true)"
+  code="${result%% *}"
+  final_url="${result#* }"
+  server="$(
+    awk '
+      BEGIN { IGNORECASE = 1 }
+      /^server:/ { value = $0 }
+      END {
+        sub(/^[Ss]erver:[[:space:]]*/, "", value)
+        gsub(/\r/, "", value)
+        print value
+      }
+    ' "$headers"
+  )"
+  rm -f "$headers"
+
   if [[ "$code" == "200" ]]; then
-    printf 'OK   %s\n' "$url"
+    if [[ "$server" == "GitHub.com" ]]; then
+      if [[ "$final_url" != "$url" ]]; then
+        printf 'OK   %s -> %s\n' "$url" "$final_url"
+      else
+        printf 'OK   %s\n' "$url"
+      fi
+    else
+      printf 'FAIL %s returned HTTP 200 from %s, expected GitHub.com\n' "$url" "${server:-unknown server}"
+      failures=$((failures + 1))
+    fi
   else
     printf 'FAIL %s returned HTTP %s\n' "$url" "$code"
     failures=$((failures + 1))
+  fi
+}
+
+dig_query() {
+  if [[ -n "$dns_resolver" ]]; then
+    dig "@${dns_resolver}" "$@"
+  else
+    dig "$@"
   fi
 }
 
@@ -46,8 +80,14 @@ for route in "${routes[@]}"; do
 done
 
 section "DNS records"
-mapfile -t apex_records < <(dig +short "$domain" A | sort)
-mapfile -t www_cname_records < <(dig +short "www.${domain}" CNAME | sed 's/\.$//' | sort)
+if [[ -n "$dns_resolver" ]]; then
+  printf 'Resolver: %s\n' "$dns_resolver"
+else
+  printf 'Resolver: system default\n'
+fi
+
+mapfile -t apex_records < <(dig_query +short "$domain" A | sort)
+mapfile -t www_cname_records < <(dig_query +short "www.${domain}" CNAME | sed 's/\.$//' | sort)
 
 printf 'A     %s -> %s\n' "$domain" "${apex_records[*]:-(none)}"
 printf 'CNAME www.%s -> %s\n' "$domain" "${www_cname_records[*]:-(none)}"

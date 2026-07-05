@@ -24,7 +24,7 @@ npm run preview
 npm run verify:deployment
 ```
 
-This checks the GitHub Pages fallback URL, the custom domain DNS records, the main public routes, the PDF CV, and GitHub Pages health. It is expected to fail the custom-domain checks until DNS is moved from Squarespace to GitHub Pages.
+This checks the GitHub Pages fallback URL, the custom domain DNS records, the main public routes, the PDF CV, and GitHub Pages health. During DNS propagation, a local resolver may still return stale records; use `DNS_RESOLVER=1.1.1.1 npm run verify:deployment` to check DNS through a public resolver.
 
 ## Content Updates
 
@@ -45,7 +45,7 @@ The GitHub Pages fallback URL is:
 https://jslee02.github.io/
 ```
 
-DNS for `jeongseok.dev` should point to GitHub Pages when cutting over from Squarespace:
+Domain operations are documented in [`docs/domain.md`](docs/domain.md). The intended DNS for `jeongseok.dev` is:
 
 ```txt
 jeongseok.dev.      A     185.199.108.153
@@ -64,13 +64,10 @@ jeongseok.dev.      AAAA  2606:50c0:8002::153
 jeongseok.dev.      AAAA  2606:50c0:8003::153
 ```
 
-Do not keep the GitHub Pages custom domain enabled while DNS still points to Squarespace, because `http://jslee02.github.io/` may redirect through `jeongseok.dev` and end up at the old Google Sites page.
-
 The production path is:
 
-- `https://jslee02.github.io/` serves the built site from GitHub Pages.
 - DNS must point the apex domain to GitHub Pages A records and `www` to `jslee02.github.io`.
-- After DNS changes are applied, configure `jeongseok.dev` as the GitHub Pages custom domain:
+- Configure `jeongseok.dev` as the GitHub Pages custom domain:
 
 ```bash
 gh api --method PUT repos/jslee02/jslee02.github.io/pages \
