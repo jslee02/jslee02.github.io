@@ -15,6 +15,7 @@ github_pages_ips=(
 
 routes=(
   "/"
+  "/software/"
   "/work/"
   "/research/"
   "/cv/"
