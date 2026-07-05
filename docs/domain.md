@@ -68,7 +68,7 @@ gh api --method PUT repos/jslee02/jslee02.github.io/pages \
   -F https_enforced=true
 ```
 
-If this returns `The certificate does not exist yet`, wait for GitHub Pages to finish certificate provisioning and retry. `.dev` domains are HTTPS-first in modern browsers, so certificate readiness matters before considering the cutover complete.
+If this returns `The certificate does not exist yet`, wait for GitHub Pages to finish certificate provisioning and retry. GitHub documents that HTTPS availability can take up to an hour after custom-domain configuration; if the certificate still does not appear after DNS is correct, remove and re-add the custom domain in GitHub Pages settings to retrigger provisioning. `.dev` domains are HTTPS-first in modern browsers, so certificate readiness matters before considering the cutover complete.
 
 ## Verification
 
