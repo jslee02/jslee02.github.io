@@ -61,8 +61,8 @@ export const projects = [
     title: "Awesome Robotics Libraries",
     subtitle: "Curated software map for robotics developers",
     status: "Maintainer",
-    image: "/assets/jeongseok-lee.jpg",
-    imageAlt: "Jeongseok Lee portrait",
+    image: "/assets/robotics-libraries.svg",
+    imageAlt: "Abstract map of connected robotics software libraries",
     description:
       "A high-signal index of robotics software libraries and resources, maintained alongside related collections for collision detection, graphics, GPGPU, and ECS.",
     impact: [

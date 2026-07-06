@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Robotics software libraries map</title>
+  <desc id="desc">A compact abstract diagram of connected robotics software modules.</desc>
+  <rect width="960" height="540" fill="#eef2ef"/>
+  <g fill="none" stroke="#c8d4d0" stroke-width="3">
+    <path d="M218 154h180l74 82h160l96 110"/>
+    <path d="M218 154l96 188h214l104-106"/>
+    <path d="M314 342l-76 76h394l96-72"/>
+    <path d="M398 154l130 188"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-weight="700">
+    <rect x="156" y="102" width="162" height="104" rx="12" fill="#ffffff" stroke="#dfe5e7"/>
+    <text x="190" y="146" fill="#171b20" font-size="24">planning</text>
+    <text x="190" y="176" fill="#65717d" font-size="17">motion / tasks</text>
+    <rect x="356" y="102" width="162" height="104" rx="12" fill="#ffffff" stroke="#dfe5e7"/>
+    <text x="392" y="146" fill="#171b20" font-size="24">dynamics</text>
+    <text x="392" y="176" fill="#65717d" font-size="17">simulation</text>
+    <rect x="612" y="184" width="162" height="104" rx="12" fill="#ffffff" stroke="#dfe5e7"/>
+    <text x="650" y="228" fill="#171b20" font-size="24">control</text>
+    <text x="650" y="258" fill="#65717d" font-size="17">robots</text>
+    <rect x="236" y="294" width="162" height="104" rx="12" fill="#ffffff" stroke="#dfe5e7"/>
+    <text x="274" y="338" fill="#171b20" font-size="24">sensing</text>
+    <text x="274" y="368" fill="#65717d" font-size="17">perception</text>
+    <rect x="492" y="294" width="162" height="104" rx="12" fill="#ffffff" stroke="#dfe5e7"/>
+    <text x="524" y="338" fill="#171b20" font-size="24">tooling</text>
+    <text x="524" y="368" fill="#65717d" font-size="17">libraries</text>
+  </g>
+  <circle cx="237" cy="154" r="9" fill="#0f625f"/>
+  <circle cx="437" cy="154" r="9" fill="#6e4660"/>
+  <circle cx="693" cy="236" r="9" fill="#815e16"/>
+  <circle cx="317" cy="346" r="9" fill="#2d5f91"/>
+  <circle cx="573" cy="346" r="9" fill="#0f625f"/>
+</svg>
