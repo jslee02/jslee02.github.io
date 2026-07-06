@@ -23,7 +23,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 74px;
 }
 
 body {
@@ -296,6 +296,42 @@ h3 {
 }
 
 .section-heading h2 {
+  margin-bottom: 0;
+}
+
+.content-section {
+  scroll-margin-top: 74px;
+  border-top: 1px solid var(--line);
+}
+
+.section-intro {
+  max-width: 720px;
+  margin-bottom: 1.1rem;
+}
+
+.section-intro h2 {
+  max-width: 34ch;
+  font-size: clamp(1.08rem, 1.65vw, 1.32rem);
+  margin-bottom: 0.45rem;
+}
+
+.section-intro p:not(.eyebrow) {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: #313a44;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.section-continuation {
+  padding-top: 0;
+}
+
+.compact-heading {
+  margin-bottom: 0.8rem;
+}
+
+.compact-heading h3 {
   margin-bottom: 0;
 }
 
@@ -663,6 +699,22 @@ h3 {
   .section-shell {
     width: min(100% - 1.25rem, 1120px);
     padding-block: 1.35rem;
+  }
+
+  .content-section {
+    scroll-margin-top: 0;
+  }
+
+  .section-intro {
+    margin-bottom: 0.85rem;
+  }
+
+  .section-intro h2 {
+    font-size: clamp(1rem, 4.8vw, 1.16rem);
+  }
+
+  .section-intro p:not(.eyebrow) {
+    font-size: 0.88rem;
   }
 
   h1 {

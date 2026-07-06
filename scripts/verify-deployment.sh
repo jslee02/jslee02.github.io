@@ -22,6 +22,7 @@ routes=(
   "/contact/"
   "/ko/"
   "/ko/software/"
+  "/ko/work/"
   "/ko/research/"
   "/ko/cv/"
   "/ko/contact/"

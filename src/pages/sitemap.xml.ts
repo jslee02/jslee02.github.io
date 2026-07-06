@@ -1,6 +1,6 @@
 import { localizedPath, locales } from "@/i18n/content";
 
-const pages = ["/", "/software/", "/research/", "/cv/", "/contact/"];
+const pages = ["/"];
 
 export function GET() {
   const urls = locales

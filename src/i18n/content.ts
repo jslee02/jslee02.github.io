@@ -21,6 +21,18 @@ export function localizedPath(locale: Locale, path: string) {
   return path === "/" ? `/${locale}/` : `/${locale}${path}`;
 }
 
+export function singlePagePath(locale: Locale, path: string) {
+  const root = localizedPath(locale, "/");
+  const basePath = canonicalBasePath(path);
+
+  if (basePath === "/") {
+    return root;
+  }
+
+  const section = basePath.replace(/^\/|\/$/g, "");
+  return `${root}#${section}`;
+}
+
 export function basePathFromPathname(pathname: string) {
   if (pathname === "/ko" || pathname === "/ko/") {
     return "/";

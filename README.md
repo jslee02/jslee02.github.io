@@ -40,7 +40,9 @@ This checks the GitHub Pages fallback URL, the custom domain DNS records, the ma
 
 English is the default language at `/`. Korean best-effort pages live under `/ko/`.
 
-Shared page components in `src/components/pages/` receive a `locale` prop, and localized strings/data are composed in `src/i18n/content.ts`. Add new localized pages by creating thin route wrappers that pass `locale="en"` or `locale="ko"` to the shared component.
+The primary site is a single-page profile. Shared components receive a `locale` prop, and localized strings/data are composed in `src/i18n/content.ts`.
+
+Primary navigation links point to homepage anchors such as `/#software` and `/ko/#software`. Legacy route wrappers such as `/software/`, `/research/`, `/cv/`, and `/contact/` are kept as lightweight compatibility redirects to those anchors.
 
 ## Deployment
 

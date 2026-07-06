@@ -1,10 +1,13 @@
 ---
-import ProjectCard from "@/components/ProjectCard.astro";
+import SoftwarePortfolio from "@/components/SoftwarePortfolio.astro";
+import ContactSection from "@/components/sections/ContactSection.astro";
+import CvSection from "@/components/sections/CvSection.astro";
+import ResearchSection from "@/components/sections/ResearchSection.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import {
   defaultLocale,
   getContent,
-  localizedPath,
+  singlePagePath,
   type Locale,
 } from "@/i18n/content";
 
@@ -14,7 +17,7 @@ interface Props {
 
 const { locale = defaultLocale } = Astro.props;
 const content = getContent(locale);
-const { profile, featuredProjects } = content;
+const { profile } = content;
 const page = content.pages.home;
 
 const personLd = {
@@ -49,10 +52,10 @@ const personLd = {
       <h1>{profile.name}</h1>
       <p class="lead">{profile.focus}</p>
       <div class="hero-actions">
-        <a class="button primary" href={localizedPath(locale, "/software/")}>
+        <a class="button primary" href={singlePagePath(locale, "/software/")}>
           {page.softwareCta}
         </a>
-        <a class="button secondary" href={localizedPath(locale, "/cv/")}>
+        <a class="button secondary" href={singlePagePath(locale, "/cv/")}>
           {page.cvCta}
         </a>
       </div>
@@ -90,30 +93,8 @@ const personLd = {
     </div>
   </section>
 
-  <section class="section-shell">
-    <div class="section-heading">
-      <p class="eyebrow">{page.featuredEyebrow}</p>
-      <h2>{page.featuredTitle}</h2>
-      <a href={localizedPath(locale, "/software/")}>{page.viewAllSoftware}</a>
-    </div>
-    <div class="project-grid featured">
-      {featuredProjects.map((project) => <ProjectCard project={project} />)}
-    </div>
-  </section>
-
-  <section class="section-shell focus-section">
-    <div>
-      <p class="eyebrow">{page.focusEyebrow}</p>
-      <h2>{page.focusTitle}</h2>
-    </div>
-    <div class="focus-grid">
-      {
-        profile.tags.map((tag) => (
-          <div class="focus-item">
-            <span>{tag}</span>
-          </div>
-        ))
-      }
-    </div>
-  </section>
+  <SoftwarePortfolio locale={locale} />
+  <ResearchSection locale={locale} />
+  <CvSection locale={locale} />
+  <ContactSection locale={locale} />
 </BaseLayout>

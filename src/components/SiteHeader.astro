@@ -5,6 +5,7 @@ import {
   defaultLocale,
   getContent,
   localizedPath,
+  singlePagePath,
   type Locale,
 } from "@/i18n/content";
 
@@ -19,23 +20,20 @@ const navItems = content.nav;
 const pathname = Astro.url.pathname;
 const currentBasePath = canonicalBasePath(basePathFromPathname(pathname));
 const alternateLocale: Locale = locale === "en" ? "ko" : "en";
-const languageHref = localizedPath(alternateLocale, currentBasePath);
+const languageHref = singlePagePath(alternateLocale, currentBasePath);
+const homeHref = localizedPath(locale, "/");
 ---
 
 <header class="site-header">
-  <a class="brand" href="/" aria-label="Jeongseok Lee home">
+  <a class="brand" href={homeHref} aria-label="Jeongseok Lee home">
     <span class="brand-mark">JL</span>
     <span>Jeongseok Lee</span>
   </a>
   <nav class="site-nav" aria-label="Main navigation">
     {
       navItems.map((item) => {
-        const itemHref = localizedPath(locale, item.href);
-        const isActive =
-          item.href === "/"
-            ? currentBasePath === "/"
-            : currentBasePath.startsWith(item.href) ||
-              item.aliases?.some((alias) => currentBasePath.startsWith(alias));
+        const itemHref = singlePagePath(locale, item.href);
+        const isActive = item.href === "/" && currentBasePath === "/";
         return (
           <a href={itemHref} aria-current={isActive ? "page" : undefined}>
             {item.label}
