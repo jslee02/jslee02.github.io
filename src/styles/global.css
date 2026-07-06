@@ -242,40 +242,6 @@ h3 {
   text-align: right;
 }
 
-.proof-band {
-  border-block: 1px solid var(--line);
-  background: var(--surface-strong);
-}
-
-.proof-grid {
-  display: grid;
-  width: min(1080px, calc(100% - 2rem));
-  margin-inline: auto;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.proof-grid div {
-  min-height: 92px;
-  padding: 1rem;
-  border-right: 1px solid var(--line);
-}
-
-.proof-grid div:first-child {
-  border-left: 1px solid var(--line);
-}
-
-.proof-grid strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--ink);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  line-height: 1.1;
-}
-
-.proof-grid span {
-  color: var(--muted);
-}
-
 .split-section {
   display: grid;
   grid-template-columns: minmax(260px, 0.7fr) minmax(320px, 1fr);
@@ -432,6 +398,42 @@ h3 {
   margin-bottom: 0.7rem;
   color: var(--gold);
   font-weight: 720;
+}
+
+.resource-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.resource-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 0.32fr);
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(32, 37, 43, 0.03);
+}
+
+.resource-card p {
+  margin-bottom: 0.55rem;
+  color: #313a44;
+  font-size: 0.9rem;
+}
+
+.resource-card .compact-list {
+  color: #313a44;
+  font-size: 0.88rem;
+}
+
+.resource-card .tag-list {
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+.resource-card .inline-links {
+  justify-content: flex-end;
 }
 
 .compact-list {
@@ -660,16 +662,6 @@ h3 {
     max-width: 300px;
   }
 
-  .proof-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .proof-grid div,
-  .proof-grid div:first-child {
-    border: 1px solid var(--line);
-    border-width: 0 1px 1px 0;
-  }
-
   .project-grid,
   .project-grid.featured,
   .contact-grid {
@@ -686,6 +678,7 @@ h3 {
   }
 
   .paper-item,
+  .resource-card,
   .timeline-item {
     grid-template-columns: 1fr;
   }
@@ -781,7 +774,6 @@ h3 {
     justify-content: flex-start;
   }
 
-  .proof-grid,
   .focus-grid {
     grid-template-columns: 1fr;
   }
@@ -796,6 +788,7 @@ h3 {
   }
 
   .project-body,
+  .resource-card,
   .plain-card,
   .paper-item,
   .timeline-item,
@@ -830,5 +823,10 @@ h3 {
 
   .project-list .project-body {
     padding: 0.85rem;
+  }
+
+  .resource-card .tag-list,
+  .resource-card .inline-links {
+    justify-content: flex-start;
   }
 }

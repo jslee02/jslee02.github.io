@@ -1,5 +1,5 @@
 import { career, education, profile, skills } from "@/data/profile";
-import { projects } from "@/data/projects";
+import { curatedLists, metaProjects, projects } from "@/data/projects";
 import {
   awards,
   patents,
@@ -109,6 +109,14 @@ const pages = {
       heading:
         "Robotics software, simulation infrastructure, and digital-human systems.",
       lead: "Public engineering work organized around durable robotics libraries, research-facing simulation systems, and tools that make implementation judgment visible.",
+      metaEyebrow: "Meta public work",
+      metaHeading: "Work-specific open-source maintenance and packaging.",
+      metaLead:
+        "Meta-related public repositories, package recipes, and ecosystem maintenance are grouped separately from personal open-source projects.",
+      curatedEyebrow: "Curated lists",
+      curatedHeading: "Awesome lists maintained separately from project work.",
+      curatedLead:
+        "These collections are useful discovery surfaces for robotics, collision detection, graphics, GPGPU, ECS, and C++/Python tooling.",
     },
     research: {
       title: "Research",
@@ -172,6 +180,14 @@ const pages = {
       heading:
         "로보틱스 소프트웨어, 시뮬레이션 인프라, 디지털 휴먼 시스템.",
       lead: "오래 유지되는 로보틱스 라이브러리, 연구용 시뮬레이션 시스템, 구현 역량을 보여주는 도구를 중심으로 정리한 공개 엔지니어링 작업입니다.",
+      metaEyebrow: "Meta 공개 작업",
+      metaHeading: "업무 관련 오픈소스 유지보수와 패키징.",
+      metaLead:
+        "Meta 관련 공개 저장소, 패키지 레시피, 생태계 유지보수 작업은 개인 오픈소스 프로젝트와 분리해 정리합니다.",
+      curatedEyebrow: "큐레이션 목록",
+      curatedHeading: "프로젝트 작업과 별도로 유지하는 Awesome 목록.",
+      curatedLead:
+        "로보틱스, 충돌 검출, 그래픽스, GPGPU, ECS, C++/Python 도구를 찾는 데 유용한 공개 목록입니다.",
     },
     research: {
       title: "연구",
@@ -396,6 +412,93 @@ const koProjects = projects.map((project) => ({
   ...(projectKo[project.title as keyof typeof projectKo] ?? {}),
 }));
 
+const metaProjectKo = {
+  "jeongseok-meta": {
+    status: "Meta 공개 생태계",
+    subtitle: "Meta 관련 공개 GitHub 계정",
+    description:
+      "디지털 휴먼, 시뮬레이션, 시각화, 연구 도구와 관련된 공개 포크, 패키지 레시피, Meta 관련 오픈소스 유지보수 작업입니다.",
+    impact: [
+      "업무 관련 공개 유지보수 작업을 개인 jslee02 계정과 분리해 관리합니다.",
+      "MHR, Momentum, DART, viser, C++/Python 인프라와 관련된 공개 작업을 포함합니다.",
+    ],
+    tags: ["Meta", "오픈소스", "연구 도구"],
+  },
+  "conda-forge feedstock maintenance": {
+    status: "패키징 / 생태계",
+    subtitle: "연구 소프트웨어 패키징 인프라",
+    description:
+      "로보틱스, 비전, 기하, 시각화, ML, 시뮬레이션 관련 conda-forge 패키지 인벤토리입니다.",
+    impact: [
+      "생성한 feedstock 58개, 공동 유지보수 11개, 추가 기여 1개, 총 70개 feedstock을 추적합니다.",
+      "MHR, Momentum, DART, viser, nerfstudio, gpytoolbox, mmpose, AdaptiveCpp 등의 패키지를 포함합니다.",
+    ],
+    tags: ["conda-forge", "패키징", "연구 인프라"],
+  },
+};
+
+const koMetaProjects = metaProjects.map((item) => ({
+  ...item,
+  ...(metaProjectKo[item.title as keyof typeof metaProjectKo] ?? {}),
+}));
+
+const curatedListKo = {
+  "Awesome Robotics Libraries": {
+    subtitle: "로보틱스 소프트웨어 지도",
+    status: "유지보수자",
+    description:
+      "플래닝, 동역학, 인식, 제어, 시뮬레이션, 도구를 아우르는 로보틱스 라이브러리와 소프트웨어 큐레이션입니다.",
+    tags: ["로보틱스", "라이브러리", "오픈소스"],
+  },
+  "Awesome Collision Detection": {
+    subtitle: "기하와 근접 질의",
+    status: "유지보수자",
+    description:
+      "로보틱스, 시뮬레이션, 모션 플래닝, 그래픽스를 위한 충돌 검출 라이브러리와 리소스 큐레이션입니다.",
+    tags: ["충돌 검출", "기하", "시뮬레이션"],
+  },
+  "Awesome Graphics Libraries": {
+    subtitle: "3D 그래픽스 리소스",
+    status: "유지보수자",
+    description:
+      "시뮬레이션, 시각화, 렌더링, 도구 개발과 연결되는 3D 그래픽스 라이브러리와 리소스 큐레이션입니다.",
+    tags: ["그래픽스", "시각화", "렌더링"],
+  },
+  "Awesome Entity Component System": {
+    subtitle: "ECS 라이브러리와 리소스",
+    status: "유지보수자",
+    description:
+      "확장 가능한 시뮬레이션, 게임, 도구 아키텍처를 위한 Entity-Component-System 라이브러리와 리소스 큐레이션입니다.",
+    tags: ["ECS", "아키텍처", "C++"],
+  },
+  "Awesome GPGPU": {
+    subtitle: "CUDA, OpenCL, Vulkan, compute",
+    status: "유지보수자",
+    description:
+      "CUDA, OpenCL, Vulkan 및 관련 도구를 포함하는 이기종 compute 리소스 큐레이션입니다.",
+    tags: ["GPGPU", "CUDA", "Compute"],
+  },
+  "Awesome Robotics Simulation": {
+    subtitle: "다물체 동역학 논문",
+    status: "유지보수자",
+    description:
+      "다물체 동역학 시뮬레이션 논문과 로보틱스 시뮬레이션 연구 맥락을 정리한 리소스입니다.",
+    tags: ["로보틱스 시뮬레이션", "다물체 동역학", "논문"],
+  },
+  "Awesome C++ Python Binding Generators": {
+    subtitle: "바인딩 생성기 조사",
+    status: "유지보수자",
+    description:
+      "Python API가 필요한 C++ 시뮬레이션 및 로보틱스 라이브러리에 유용한 자동 Python 바인딩 생성기 큐레이션입니다.",
+    tags: ["C++", "Python", "바인딩"],
+  },
+};
+
+const koCuratedLists = curatedLists.map((item) => ({
+  ...item,
+  ...(curatedListKo[item.title as keyof typeof curatedListKo] ?? {}),
+}));
+
 const koPublications = publications.map((paper) => ({
   ...paper,
   tags: paper.tags.map((tag) => {
@@ -445,6 +548,8 @@ export function getContent(locale: Locale) {
       education: koEducation,
       skills: koSkills,
       projects: koProjects,
+      metaProjects: koMetaProjects,
+      curatedLists: koCuratedLists,
       featuredProjects: koProjects.filter((project) => project.featured),
       publications: koPublications,
       patents,
@@ -464,6 +569,8 @@ export function getContent(locale: Locale) {
     education,
     skills,
     projects,
+    metaProjects,
+    curatedLists,
     featuredProjects: projects.filter((project) => project.featured),
     publications,
     patents,

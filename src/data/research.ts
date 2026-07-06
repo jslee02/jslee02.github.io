@@ -3,21 +3,26 @@ export const publications = [
     title: "MHR: Momentum Human Rig",
     authors: "A. Ferguson et al. (incl. Jeongseok Lee)",
     venue: "arXiv, 2025",
-    links: [{ label: "arXiv", href: "https://arxiv.org/pdf/2511.15586" }],
+    links: [{ label: "PDF", href: "https://arxiv.org/pdf/2511.15586" }],
     tags: ["Digital humans", "Avatars"],
   },
   {
     title: "Fast and Feature-Complete Differentiable Physics for Articulated Rigid Bodies with Contact",
     authors: "Keenon Werling, Dalton Omens, Jeongseok Lee, Ioannis Exarchos, C. Karen Liu",
     venue: "Robotics: Science and Systems, 2021",
-    links: [],
+    links: [
+      {
+        label: "PDF",
+        href: "https://www.roboticsproceedings.org/rss17/p034.pdf",
+      },
+    ],
     tags: ["Differentiable physics", "Contact"],
   },
   {
     title: "Bayesian Policy Optimization for Model Uncertainty",
     authors: "Gilwoo Lee, Brian Hou, Aditya Mandalika, Jeongseok Lee, Siddhartha S. Srinivasa",
     venue: "International Conference on Learning Representations, 2019",
-    links: [],
+    links: [{ label: "PDF", href: "https://arxiv.org/pdf/1810.01014" }],
     tags: ["Machine learning", "Robotics"],
   },
   {
@@ -25,7 +30,13 @@ export const publications = [
     authors:
       "Jeongseok Lee, Michael X. Grey, Sehoon Ha, Tobias Kunz, Sumit Jain, Yuting Ye, Siddhartha S. Srinivasa, Mike Stilman, C. Karen Liu",
     venue: "Journal of Open Source Software, 2018",
-    links: [{ label: "DOI", href: "https://doi.org/10.21105/joss.00500" }],
+    links: [
+      { label: "DOI", href: "https://doi.org/10.21105/joss.00500" },
+      {
+        label: "PDF",
+        href: "https://www.theoj.org/joss-papers/joss.00500/10.21105.joss.00500.pdf",
+      },
+    ],
     tags: ["Open source", "Simulation"],
   },
   {
@@ -33,14 +44,19 @@ export const publications = [
       "Sampling of Pareto-Optimal Trajectories using Progressive Objective Evaluation in Multi-Objective Motion Planning",
     authors: "Jeongseok Lee, Daqing Yi, Siddhartha S. Srinivasa",
     venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems, 2018",
-    links: [],
+    links: [
+      {
+        label: "PDF",
+        href: "https://personalrobotics.cs.washington.edu/publications/lee2018sampling.pdf",
+      },
+    ],
     tags: ["Motion planning"],
   },
   {
     title: "A Linear-Time Variational Integrator for Multibody Systems",
     authors: "Jeongseok Lee, C. Karen Liu, Frank C. Park, Siddhartha S. Srinivasa",
     venue: "Algorithmic Foundations of Robotics, 2016",
-    links: [],
+    links: [{ label: "PDF", href: "https://arxiv.org/pdf/1609.02898" }],
     tags: ["Multibody dynamics"],
   },
   {
@@ -62,7 +78,12 @@ export const publications = [
     title: "Optimal Landing Motions for Legged Robots with Variable Stiffness Joints",
     authors: "Jeongseok Lee, Frank C. Park",
     venue: "International Conference on Advanced Mechatronics, 2010",
-    links: [],
+    links: [
+      {
+        label: "PDF",
+        href: "https://www.jstage.jst.go.jp/article/jsmeicam/2010.5/0/2010.5_444/_pdf/-char/en",
+      },
+    ],
     tags: ["Legged robots"],
   },
   {
@@ -80,11 +101,23 @@ export const patents = [
     number: "US Patent 12,013,686",
     authors:
       "A. Stubbs, A. J. Parness, S. B. Karumanchi, J. R. Hooks, P. Owan, R. B. Warrier, A. C. C. Lopez, J. Lee, C. Salisbury",
+    links: [
+      {
+        label: "PDF",
+        href: "https://patentimages.storage.googleapis.com/fa/48/85/ceed098820f296/US12013686.pdf",
+      },
+    ],
   },
   {
     title: "Robotic picking assemblies configured to grasp multiple items",
     number: "US Patent 11,478,942",
     authors: "J. Lee, A. J. Parness, A. Stubbs",
+    links: [
+      {
+        label: "PDF",
+        href: "https://patentimages.storage.googleapis.com/62/cd/f0/72e84d8a4aced7/US11478942.pdf",
+      },
+    ],
   },
 ];
 

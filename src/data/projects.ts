@@ -34,7 +34,7 @@ export const projects = [
     ],
     links: [
       { label: "GitHub", href: "https://github.com/facebookresearch/MHR" },
-      { label: "arXiv", href: "https://arxiv.org/pdf/2511.15586" },
+      { label: "PDF", href: "https://arxiv.org/pdf/2511.15586" },
     ],
     tags: ["Digital humans", "Avatars", "Meta", "Research"],
     featured: true,
@@ -56,27 +56,6 @@ export const projects = [
     ],
     tags: ["Kinematics", "Optimization", "Human motion", "Meta"],
     featured: true,
-  },
-  {
-    title: "Awesome Robotics Libraries",
-    subtitle: "Curated software map for robotics developers",
-    status: "Maintainer",
-    image: "/assets/robotics-libraries.svg",
-    imageAlt: "Abstract map of connected robotics software libraries",
-    description:
-      "A high-signal index of robotics software libraries and resources, maintained alongside related collections for collision detection, graphics, GPGPU, and ECS.",
-    impact: [
-      "Helps robotics developers discover practical libraries across planning, dynamics, perception, control, and tooling.",
-      "One of several maintained public lists that make Jeongseok's software taste visible beyond individual projects.",
-    ],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/jslee02/awesome-robotics-libraries",
-      },
-    ],
-    tags: ["Robotics", "Open source", "Curation"],
-    featured: false,
   },
   {
     title: "AIKIDO",
@@ -118,8 +97,8 @@ export const projects = [
     title: "Gazebo",
     subtitle: "Robot simulation ecosystem",
     status: "Contributor",
-    image: "/assets/gazebo-project.svg",
-    imageAlt: "Abstract Gazebo robot simulation graphic",
+    image: "/assets/gazebo-sim.webp",
+    imageAlt: "Gazebo simulator screenshot from the upstream Gazebo website",
     description:
       "Integration work in the GUI-based robot simulation ecosystem used by robotics researchers and developers.",
     impact: [
@@ -135,3 +114,141 @@ export const projects = [
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+export const metaProjects = [
+  {
+    title: "jeongseok-meta",
+    subtitle: "Meta-specific public GitHub account",
+    status: "Meta public ecosystem",
+    description:
+      "Public forks, package recipes, and Meta-related open-source maintenance around digital humans, simulation, visualization, and research tooling.",
+    impact: [
+      "Keeps work-specific public maintenance separate from the personal jslee02 account.",
+      "Includes public work around MHR, Momentum, DART, viser, and supporting C++/Python infrastructure.",
+    ],
+    links: [
+      { label: "GitHub", href: "https://github.com/jeongseok-meta" },
+    ],
+    tags: ["Meta", "Open source", "Research tooling"],
+  },
+  {
+    title: "conda-forge feedstock maintenance",
+    subtitle: "Packaging infrastructure for research software",
+    status: "Packaging / ecosystem",
+    description:
+      "Tracked conda-forge inventory for robotics, vision, geometry, visualization, ML, and simulation-adjacent packages.",
+    impact: [
+      "58 feedstocks created, 11 co-maintained, 1 additional feedstock contributed to, and 70 total feedstocks listed.",
+      "Includes packages such as MHR, Momentum, DART, viser, nerfstudio, gpytoolbox, mmpose, and AdaptiveCpp.",
+    ],
+    links: [
+      {
+        label: "Inventory",
+        href: "https://github.com/jeongseok-meta/conda-forge-dashboard/wiki/Feedstock-Inventory",
+      },
+      {
+        label: "Dashboard",
+        href: "https://github.com/jeongseok-meta/conda-forge-dashboard",
+      },
+    ],
+    tags: ["conda-forge", "Packaging", "Research infrastructure"],
+  },
+];
+
+export const curatedLists = [
+  {
+    title: "Awesome Robotics Libraries",
+    subtitle: "Robotics software map",
+    status: "Maintainer",
+    description:
+      "Curated robotics libraries and software across planning, dynamics, perception, control, simulation, and tooling.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/jslee02/awesome-robotics-libraries",
+      },
+    ],
+    tags: ["Robotics", "Libraries", "Open source"],
+  },
+  {
+    title: "Awesome Collision Detection",
+    subtitle: "Geometry and proximity queries",
+    status: "Maintainer",
+    description:
+      "Curated collision detection libraries and resources for robotics, simulation, motion planning, and graphics.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/jslee02/awesome-collision-detection",
+      },
+    ],
+    tags: ["Collision detection", "Geometry", "Simulation"],
+  },
+  {
+    title: "Awesome Graphics Libraries",
+    subtitle: "3D graphics resources",
+    status: "Maintainer",
+    description:
+      "Curated 3D graphics libraries and resources relevant to simulation, visualization, rendering, and tooling.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/jslee02/awesome-graphics-libraries",
+      },
+    ],
+    tags: ["Graphics", "Visualization", "Rendering"],
+  },
+  {
+    title: "Awesome Entity Component System",
+    subtitle: "ECS libraries and resources",
+    status: "Maintainer",
+    description:
+      "Curated Entity-Component-System libraries and resources for scalable simulation, game, and tool architectures.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/jslee02/awesome-entity-component-system",
+      },
+    ],
+    tags: ["ECS", "Architecture", "C++"],
+  },
+  {
+    title: "Awesome GPGPU",
+    subtitle: "CUDA, OpenCL, Vulkan, and compute",
+    status: "Maintainer",
+    description:
+      "Curated GPGPU resources for heterogeneous compute work spanning CUDA, OpenCL, Vulkan, and related tooling.",
+    links: [
+      { label: "GitHub", href: "https://github.com/jslee02/awesome-gpgpu" },
+    ],
+    tags: ["GPGPU", "CUDA", "Compute"],
+  },
+  {
+    title: "Awesome Robotics Simulation",
+    subtitle: "Multibody dynamics papers",
+    status: "Maintainer",
+    description:
+      "Curated resources for multibody dynamics simulation papers and robotics simulation research context.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/jslee02/awesome-robotics-simulation",
+      },
+    ],
+    tags: ["Robotics simulation", "Multibody dynamics", "Papers"],
+  },
+  {
+    title: "Awesome C++ Python Binding Generators",
+    subtitle: "Binding generator survey",
+    status: "Maintainer",
+    description:
+      "Curated automatic Python binding generators for C++ projects, useful for simulation and robotics libraries with Python APIs.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/jslee02/awesome-cpp-python-binding-generator",
+      },
+    ],
+    tags: ["C++", "Python", "Bindings"],
+  },
+];

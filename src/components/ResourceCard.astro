@@ -1,0 +1,44 @@
+---
+interface LinkItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  item: {
+    title: string;
+    subtitle: string;
+    status: string;
+    description: string;
+    impact?: string[];
+    links: LinkItem[];
+    tags: string[];
+  };
+}
+
+const { item } = Astro.props;
+---
+
+<article class="resource-card">
+  <div>
+    <p class="eyebrow">{item.status}</p>
+    <h3>{item.title}</h3>
+    <p class="project-subtitle">{item.subtitle}</p>
+    <p>{item.description}</p>
+    {
+      item.impact?.length ? (
+        <ul class="compact-list">
+          {item.impact.map((entry) => <li>{entry}</li>)}
+        </ul>
+      ) : null
+    }
+  </div>
+  <div>
+    <div class="tag-list" aria-label={`${item.title} tags`}>
+      {item.tags.map((tag) => <span>{tag}</span>)}
+    </div>
+    <div class="inline-links">
+      {item.links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+  </div>
+</article>

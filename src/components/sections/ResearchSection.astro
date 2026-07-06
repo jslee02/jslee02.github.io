@@ -53,6 +53,15 @@ const page = content.pages.research;
             <h3>{patent.title}</h3>
             <p>{patent.authors}</p>
             <p class="meta-line">{patent.number}</p>
+            {
+              patent.links?.length ? (
+                <div class="inline-links">
+                  {patent.links.map((link) => (
+                    <a href={link.href}>{link.label}</a>
+                  ))}
+                </div>
+              ) : null
+            }
           </article>
         ))
       }
