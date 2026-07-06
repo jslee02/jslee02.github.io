@@ -1,13 +1,25 @@
 ---
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/software/", label: "Software", aliases: ["/work/"] },
-  { href: "/research/", label: "Research" },
-  { href: "/cv/", label: "CV" },
-  { href: "/contact/", label: "Contact" },
-];
+import {
+  basePathFromPathname,
+  canonicalBasePath,
+  defaultLocale,
+  getContent,
+  localizedPath,
+  type Locale,
+} from "@/i18n/content";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const content = getContent(locale);
+const navItems = content.nav;
 
 const pathname = Astro.url.pathname;
+const currentBasePath = canonicalBasePath(basePathFromPathname(pathname));
+const alternateLocale: Locale = locale === "en" ? "ko" : "en";
+const languageHref = localizedPath(alternateLocale, currentBasePath);
 ---
 
 <header class="site-header">
@@ -18,17 +30,21 @@ const pathname = Astro.url.pathname;
   <nav class="site-nav" aria-label="Main navigation">
     {
       navItems.map((item) => {
+        const itemHref = localizedPath(locale, item.href);
         const isActive =
           item.href === "/"
-            ? pathname === "/"
-            : pathname.startsWith(item.href) ||
-              item.aliases?.some((alias) => pathname.startsWith(alias));
+            ? currentBasePath === "/"
+            : currentBasePath.startsWith(item.href) ||
+              item.aliases?.some((alias) => currentBasePath.startsWith(alias));
         return (
-          <a href={item.href} aria-current={isActive ? "page" : undefined}>
+          <a href={itemHref} aria-current={isActive ? "page" : undefined}>
             {item.label}
           </a>
         );
       })
     }
+    <a class="language-switch" href={languageHref}>
+      {content.common.languageSwitch}
+    </a>
   </nav>
 </header>

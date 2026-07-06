@@ -20,6 +20,11 @@ routes=(
   "/research/"
   "/cv/"
   "/contact/"
+  "/ko/"
+  "/ko/software/"
+  "/ko/research/"
+  "/ko/cv/"
+  "/ko/contact/"
   "/cv/jeongseok-lee-cv.pdf"
   "/sitemap.xml"
 )

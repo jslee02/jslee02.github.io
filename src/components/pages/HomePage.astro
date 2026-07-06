@@ -1,0 +1,119 @@
+---
+import ProjectCard from "@/components/ProjectCard.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import {
+  defaultLocale,
+  getContent,
+  localizedPath,
+  type Locale,
+} from "@/i18n/content";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const content = getContent(locale);
+const { profile, featuredProjects } = content;
+const page = content.pages.home;
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jeongseok Lee",
+  alternateName: "JS Lee",
+  jobTitle: profile.role,
+  worksFor: {
+    "@type": "Organization",
+    name: "Meta Platforms",
+  },
+  url: "https://jeongseok.dev",
+  image: "https://jeongseok.dev/assets/jeongseok-lee.jpg",
+  email: `mailto:${profile.email}`,
+  sameAs: profile.links
+    .filter((link) => !link.href.startsWith("mailto:"))
+    .map((link) => link.href),
+  knowsAbout: profile.tags,
+};
+---
+
+<BaseLayout
+  locale={locale}
+  canonicalPath="/"
+  description={content.common.siteDescription}
+  jsonLd={personLd}
+>
+  <section class="hero section-shell">
+    <div class="hero-copy">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1>{profile.name}</h1>
+      <p class="lead">{profile.focus}</p>
+      <div class="hero-actions">
+        <a class="button primary" href={localizedPath(locale, "/software/")}>
+          {page.softwareCta}
+        </a>
+        <a class="button secondary" href={localizedPath(locale, "/cv/")}>
+          {page.cvCta}
+        </a>
+      </div>
+    </div>
+    <figure class="portrait-panel">
+      <img src="/assets/jeongseok-lee.jpg" alt={page.portraitAlt} />
+      <figcaption>
+        <strong>{profile.role}</strong>
+        <span>{profile.organization}</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="proof-band">
+    <div class="proof-grid">
+      {
+        profile.proofPoints.map((item) => (
+          <div>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-shell split-section">
+    <div>
+      <p class="eyebrow">{page.currentEyebrow}</p>
+      <h2>{page.currentTitle}</h2>
+    </div>
+    <div class="prose">
+      <p>{profile.summary}</p>
+      <p>{page.throughline}</p>
+    </div>
+  </section>
+
+  <section class="section-shell">
+    <div class="section-heading">
+      <p class="eyebrow">{page.featuredEyebrow}</p>
+      <h2>{page.featuredTitle}</h2>
+      <a href={localizedPath(locale, "/software/")}>{page.viewAllSoftware}</a>
+    </div>
+    <div class="project-grid featured">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="section-shell focus-section">
+    <div>
+      <p class="eyebrow">{page.focusEyebrow}</p>
+      <h2>{page.focusTitle}</h2>
+    </div>
+    <div class="focus-grid">
+      {
+        profile.tags.map((tag) => (
+          <div class="focus-item">
+            <span>{tag}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

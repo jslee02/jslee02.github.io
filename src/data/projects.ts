@@ -82,8 +82,8 @@ export const projects = [
     title: "AIKIDO",
     subtitle: "Motion planning and decision making",
     status: "Contributor, 2016 - 2018",
-    image: "/assets/dart-logo.jpg",
-    imageAlt: "DART logo, representing robotics software work",
+    image: "/assets/aikido-project.svg",
+    imageAlt: "Abstract AIKIDO motion planning graphic",
     description:
       "Robotic manipulation framework used by the Personal Robotics Lab, with work spanning inverse kinematics, collision detection, and robot dynamics.",
     impact: [
@@ -97,22 +97,39 @@ export const projects = [
     featured: false,
   },
   {
-    title: "FCL and Gazebo",
-    subtitle: "Collision detection and robot simulation ecosystem",
+    title: "FCL",
+    subtitle: "Flexible Collision Library",
     status: "Contributor",
-    image: "/assets/dart-logo.jpg",
-    imageAlt: "DART logo, representing simulation ecosystem work",
+    image: "/assets/fcl-project.svg",
+    imageAlt: "Abstract FCL collision detection graphic",
     description:
-      "Contributions across widely used robotics simulation infrastructure, including collision detection and GUI-based robot simulation.",
+      "Contributions to collision detection infrastructure used across robotics, motion planning, and simulation workflows.",
     impact: [
-      "FCL work focused on collision detection infrastructure.",
-      "Gazebo integration helped bring DART into established robotics simulation workflows.",
+      "Worked on collision detection infrastructure for practical robotics software stacks.",
+      "Connected geometry, contact, and simulation needs across planning and dynamics workflows.",
     ],
     links: [
       { label: "FCL", href: "https://github.com/flexible-collision-library/fcl" },
+    ],
+    tags: ["Collision detection", "Geometry", "Simulation"],
+    featured: false,
+  },
+  {
+    title: "Gazebo",
+    subtitle: "Robot simulation ecosystem",
+    status: "Contributor",
+    image: "/assets/gazebo-project.svg",
+    imageAlt: "Abstract Gazebo robot simulation graphic",
+    description:
+      "Integration work in the GUI-based robot simulation ecosystem used by robotics researchers and developers.",
+    impact: [
+      "Helped bring DART into established Gazebo simulation workflows.",
+      "Connected physics engine work to robot simulation tools used by research teams.",
+    ],
+    links: [
       { label: "Gazebo", href: "https://gazebosim.org/" },
     ],
-    tags: ["Collision detection", "Gazebo", "Simulation"],
+    tags: ["Robot simulation", "Gazebo", "Physics engines"],
     featured: false,
   },
 ];

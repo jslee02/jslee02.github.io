@@ -31,7 +31,7 @@ export const profile = {
     { label: "Email", href: "mailto:jslee02@gmail.com" },
   ],
   proofPoints: [
-    { value: "Meta", label: "Reality Labs Research | Robotics Studio" },
+    { value: "Meta", label: "Reality Labs Research | Meta Robotics Studio" },
     { value: "DART", label: "Lead developer since 2012" },
     { value: "RSS / ICLR / IROS", label: "Robotics and ML publications" },
     { value: "2 patents", label: "Robotic workcells and grasping" },

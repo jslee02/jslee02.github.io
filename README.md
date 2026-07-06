@@ -31,9 +31,16 @@ This checks the GitHub Pages fallback URL, the custom domain DNS records, the ma
 - Profile, links, skills, career, and education: `src/data/profile.ts`
 - Project cards and featured work: `src/data/projects.ts`
 - Publications, patents, talks, and service: `src/data/research.ts`
+- English and Korean route copy: `src/i18n/content.ts`
 - CV source: `github.com/jslee02/CV`
 - Public PDF CV: `public/cv/jeongseok-lee-cv.pdf`
 - Images: `public/assets/`
+
+## Internationalization
+
+English is the default language at `/`. Korean best-effort pages live under `/ko/`.
+
+Shared page components in `src/components/pages/` receive a `locale` prop, and localized strings/data are composed in `src/i18n/content.ts`. Add new localized pages by creating thin route wrappers that pass `locale="en"` or `locale="ko"` to the shared component.
 
 ## Deployment
 

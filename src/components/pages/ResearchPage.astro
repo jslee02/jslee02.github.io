@@ -1,0 +1,89 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { defaultLocale, getContent, type Locale } from "@/i18n/content";
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const content = getContent(locale);
+const page = content.pages.research;
+---
+
+<BaseLayout
+  locale={locale}
+  title={page.title}
+  description={page.description}
+  canonicalPath="/research/"
+>
+  <section class="page-hero section-shell">
+    <p class="eyebrow">{page.eyebrow}</p>
+    <h1>{page.heading}</h1>
+    <p class="lead">{page.lead}</p>
+  </section>
+
+  <section class="section-shell research-list">
+    <div class="section-heading">
+      <p class="eyebrow">{page.publicationsEyebrow}</p>
+      <h2>{page.publicationsTitle}</h2>
+    </div>
+    <div class="stack-list">
+      {
+        content.publications.map((paper) => (
+          <article class="paper-item">
+            <div>
+              <h3>{paper.title}</h3>
+              <p>{paper.authors}</p>
+              <p class="meta-line">{paper.venue}</p>
+              <div class="tag-list">
+                {paper.tags.map((tag) => <span>{tag}</span>)}
+              </div>
+            </div>
+            <div class="inline-links">
+              {paper.links.map((link) => <a href={link.href}>{link.label}</a>)}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-shell two-column-lists">
+    <div>
+      <p class="eyebrow">{page.patentsEyebrow}</p>
+      <div class="stack-list">
+        {
+          content.patents.map((patent) => (
+            <article class="plain-card">
+              <h3>{patent.title}</h3>
+              <p>{patent.authors}</p>
+              <p class="meta-line">{patent.number}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">{page.awardsServiceEyebrow}</p>
+      <div class="plain-card">
+        <h3>{page.awardsTitle}</h3>
+        <ul class="compact-list">
+          {content.awards.map((award) => <li>{award}</li>)}
+        </ul>
+      </div>
+      <div class="plain-card">
+        <h3>{page.talksTitle}</h3>
+        <ul class="compact-list">
+          {content.talks.map((talk) => <li>{talk}</li>)}
+        </ul>
+      </div>
+      <div class="plain-card">
+        <h3>{page.serviceTitle}</h3>
+        <ul class="compact-list">
+          {content.service.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,12 +1,19 @@
 ---
 import SiteFooter from "@/components/SiteFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
+import {
+  defaultLocale,
+  localizedPath,
+  locales,
+  type Locale,
+} from "@/i18n/content";
 import "@/styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
   canonicalPath?: string;
+  locale?: Locale;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -14,22 +21,44 @@ const {
   title = "Jeongseok Lee",
   description = "Jeongseok Lee is a robotics software engineer building physics simulation systems for robotics, digital humans, and AR/VR.",
   canonicalPath = Astro.url.pathname,
+  locale = defaultLocale,
   jsonLd,
 } = Astro.props;
 
 const siteTitle = title === "Jeongseok Lee" ? title : `${title} | Jeongseok Lee`;
-const canonical = new URL(canonicalPath, "https://jeongseok.dev").toString();
+const canonical = new URL(
+  localizedPath(locale, canonicalPath),
+  "https://jeongseok.dev",
+).toString();
 const image = "https://jeongseok.dev/assets/jeongseok-lee.jpg";
+const alternateLinks = locales.map((item) => ({
+  locale: item,
+  href: new URL(localizedPath(item, canonicalPath), "https://jeongseok.dev")
+    .toString(),
+}));
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{siteTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {
+      alternateLinks.map((link) => (
+        <link rel="alternate" hreflang={link.locale} href={link.href} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(
+        localizedPath(defaultLocale, canonicalPath),
+        "https://jeongseok.dev",
+      ).toString()}
+    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={description} />
@@ -51,10 +80,10 @@ const image = "https://jeongseok.dev/assets/jeongseok-lee.jpg";
     }
   </head>
   <body>
-    <SiteHeader />
+    <SiteHeader locale={locale} />
     <main>
       <slot />
     </main>
-    <SiteFooter />
+    <SiteFooter locale={locale} />
   </body>
 </html>
